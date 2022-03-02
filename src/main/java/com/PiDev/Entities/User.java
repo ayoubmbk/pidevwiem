@@ -1,5 +1,6 @@
 package com.PiDev.Entities;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -20,7 +21,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2488099530089719356L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long idUser;
@@ -32,8 +37,8 @@ public class User {
 	private String Poste;
 	private Role Role;
 	@OneToMany(mappedBy ="createdBy",fetch = FetchType.LAZY)
-
 	private List <Commentaire> commentaires;
+	
 	public User() {
 		super();
 	}

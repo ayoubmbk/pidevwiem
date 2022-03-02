@@ -1,6 +1,7 @@
 package com.PiDev.Entities;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,26 +17,31 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
-public class Commentaire {
+public class Commentaire implements Serializable{
+	
+	private static final long serialVersionUID = -684388468350405594L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 		private Long idCommentaire;
-		private String Commentaire;
+		private String commentaire;
 		private Long Likes ;
 		private Long Dislikes;
+		
 		@ManyToOne(fetch = FetchType.LAZY)
-	
+		@JoinColumn(name="commentaireParent")
 		private Commentaire commentaireParent;
+		
 		@OneToMany(mappedBy ="commentaireParent", fetch = FetchType.LAZY)
 		private List<Commentaire> reponseCommentaire;
 		
  		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "idForum", referencedColumnName = "idForum")
+		@JoinColumn(name = "idForum")
 		private Forum forum;
 		
 		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name="idUser",referencedColumnName = "idUser")
+		@JoinColumn(name="idUser")
 		private User createdBy;
 		
 		public Long getIdCommentaire() {
@@ -45,10 +51,10 @@ public class Commentaire {
 			this.idCommentaire = idCommentaire;
 		}
 		public String getCommentaire() {
-			return Commentaire;
+			return commentaire;
 		}
 		public void setCommentaire(String commentaire) {
-			Commentaire = commentaire;
+			commentaire = commentaire;
 		}
 		public Long getLikes() {
 			return Likes;
@@ -76,7 +82,7 @@ public class Commentaire {
 		}
 		@Override
 		public String toString() {
-			return "Commentaire [idCommentaire=" + idCommentaire + ", Commentaire=" + Commentaire + ", Likes=" + Likes
+			return "Commentaire [idCommentaire=" + idCommentaire + ", commentaire=" + commentaire + ", Likes=" + Likes
 					+ ", Dislikes=" + Dislikes + ", commentaireParent=" + commentaireParent + ", reponseCommentaire="
 					+ reponseCommentaire + ", forum=" + forum + ", createdBy=" + createdBy + "]";
 		}

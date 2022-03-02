@@ -17,13 +17,13 @@ import com.PiDev.Services.ForumServices;
 
 @RestController
 @RequestMapping("/api2")
-@CrossOrigin
+@CrossOrigin("*")
 public class ForumRestController {
 
 	@Autowired
 	ForumServices forumService;
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="", method = RequestMethod.GET)
 	public List<Forum> getAllForums()
 	{
 		return forumService.getAllForums();

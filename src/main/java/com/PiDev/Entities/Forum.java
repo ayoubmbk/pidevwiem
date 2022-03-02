@@ -1,5 +1,6 @@
 package com.PiDev.Entities;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -12,7 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Forum {
+public class Forum implements Serializable{
+	
+	private static final long serialVersionUID = -2863962781516995909L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long idForum;

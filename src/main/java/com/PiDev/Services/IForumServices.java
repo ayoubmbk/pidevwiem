@@ -1,6 +1,7 @@
 package com.PiDev.Services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,17 +49,19 @@ public class IForumServices implements ForumServices{
 	public List<Forum> getAllForums() {
 		List<Forum> forums = new ArrayList<>();
 		List<Forum> lista =forumRepository.findAll();
-//		for(Forum item:lista)
-//		{
-//			for(Commentaire commentaire:item.getCommentaires())
-//			{
-//				commentaire.setReponseCommentaire(null);
-//		
-//				
-//			}
-//			
-//			forums.add(item);
-//		}
+		for(Forum item:lista)
+		{
+			List<Commentaire> listeCommentaire = new ArrayList <Commentaire>(item.getCommentaires());
+			for(Commentaire commentaire1: listeCommentaire)
+			{
+				List<Commentaire> listeResponse = new ArrayList <Commentaire>(commentaire1.getReponseCommentaire());
+				for (Commentaire commentaireReponse : listeResponse) {
+					commentaireReponse.setCommentaireParent(null);
+					
+				}
+			}
+
+		}
 		return lista;
 		
 	}
