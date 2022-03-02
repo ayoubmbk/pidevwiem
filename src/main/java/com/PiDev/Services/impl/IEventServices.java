@@ -1,4 +1,4 @@
-package com.PiDev.Services;
+package com.PiDev.Services.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.PiDev.Entities.Event;
 import com.PiDev.Repos.EventRepository;
+import com.PiDev.Services.EventServices;
 
 
 @Service

@@ -1,4 +1,4 @@
-package com.PiDev.Services;
+package com.PiDev.Services.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.PiDev.Entities.User;
 import com.PiDev.Repos.UserRepository;
+import com.PiDev.Services.UserServices;
 
 @Service
 public class IUserServices implements UserServices {

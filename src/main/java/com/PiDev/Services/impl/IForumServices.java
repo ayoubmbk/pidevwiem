@@ -1,4 +1,4 @@
-package com.PiDev.Services;
+package com.PiDev.Services.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +11,7 @@ import com.PiDev.Entities.Commentaire;
 import com.PiDev.Entities.Forum;
 import com.PiDev.Repos.EventRepository;
 import com.PiDev.Repos.ForumRepository;
+import com.PiDev.Services.ForumServices;
 
 @Service
 public class IForumServices implements ForumServices{
