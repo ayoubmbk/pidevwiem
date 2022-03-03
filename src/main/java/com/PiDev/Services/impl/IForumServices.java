@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.PiDev.Entities.Commentaire;
 import com.PiDev.Entities.Forum;
+import com.PiDev.Entities.Reaction;
 import com.PiDev.Repos.EventRepository;
 import com.PiDev.Repos.ForumRepository;
 import com.PiDev.Services.ForumServices;
@@ -52,13 +53,22 @@ public class IForumServices implements ForumServices{
 		List<Forum> lista =forumRepository.findAll();
 		for(Forum item:lista)
 		{
+			List<Reaction> reactions = new ArrayList <Reaction>(item.getReactions());
+			for (Reaction reaction : reactions) {
+				reaction.setForum(null);
+			}
 			List<Commentaire> listeCommentaire = new ArrayList <Commentaire>(item.getCommentaires());
 			for(Commentaire commentaire1: listeCommentaire)
 			{
+				commentaire1.setForum(null);
+				for (Reaction reaction : commentaire1.getReactions()) {
+					reaction.setCommentaire(null);
+					reaction.setForum(null);
+				}
 				List<Commentaire> listeResponse = new ArrayList <Commentaire>(commentaire1.getReponseCommentaire());
 				for (Commentaire commentaireReponse : listeResponse) {
 					commentaireReponse.setCommentaireParent(null);
-					
+					commentaireReponse.setForum(null);
 				}
 			}
 
@@ -70,6 +80,6 @@ public class IForumServices implements ForumServices{
 	@Override
 	public List<Forum> trierForumsNomsPrix() {
 	
-		return forumRepository.trierForumsNomsPrix();
+		return null;
 	}
 }

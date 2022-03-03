@@ -10,6 +10,6 @@ import com.PiDev.Entities.enumeration.TypeReaction;
 
 @Repository
 public interface ReactionRepository extends JpaRepository<Reaction, Long>{
-	List<Reaction> findByForumIdForumAndTypeReaction(Long idForum, TypeReaction typeReaction);
-	List<Reaction> findByCommentaireIdCommentaireAndTypeReaction(Long idCommentaire, TypeReaction typeReaction);
+	List<Reaction> findByForumIdAndTypeReaction(Long idForum, TypeReaction typeReaction);
+	List<Reaction> findByCommentaireIdAndTypeReaction(Long idCommentaire, TypeReaction typeReaction);
 }

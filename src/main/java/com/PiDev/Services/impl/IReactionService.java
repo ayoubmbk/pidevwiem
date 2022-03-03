@@ -33,12 +33,12 @@ public class IReactionService implements ReactionService{
 
 	@Override
 	public List<Reaction> getAllReactionsByForumAndTypeReaction(Long idForum, TypeReaction typeReaction) {
-		return reactionRepository.findByForumIdForumAndTypeReaction(idForum, typeReaction);
+		return reactionRepository.findByForumIdAndTypeReaction(idForum, typeReaction);
 	}
 
 	@Override
 	public List<Reaction> getAllReactionsByCommentaireAndTypeReaction(Long idCommentaire, TypeReaction typeReaction) {
-		return reactionRepository.findByCommentaireIdCommentaireAndTypeReaction(idCommentaire, typeReaction);
+		return reactionRepository.findByCommentaireIdAndTypeReaction(idCommentaire, typeReaction);
 	}
 
 	@Override

@@ -13,6 +13,6 @@ import com.PiDev.Entities.*;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long>{
-	@Query("select p from Forum p order by p.Likes ASC")
-	List<Forum> trierForumsNomsPrix ();
+//	@Query("select p from Forum p order by p.Likes ASC")
+//	List<Forum> trierForumsNomsPrix ();
 }
